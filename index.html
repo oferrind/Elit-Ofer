@@ -165,7 +165,84 @@
   .sec-power{ --accent:var(--indigo); }
   .sec-dict{ --accent:var(--amber); }
   .sec-awards{ --accent:var(--coral); }
+  .sec-timeline{ --accent:var(--violet); }
   .sec-yelp{ --accent:var(--purple); }
+
+  .timeline{
+    position:relative;
+    padding-right:36px;
+    margin-right:9px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    top:4px;
+    bottom:4px;
+    right:0;
+    width:4px;
+    border-radius:4px;
+    background:linear-gradient(to bottom, var(--violet), var(--rose), var(--blue));
+  }
+  .tl-item{
+    position:relative;
+    margin-bottom:30px;
+  }
+  .tl-item:last-child{ margin-bottom:0; }
+  .tl-dot{
+    position:absolute;
+    right:-39px;
+    top:22px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:var(--violet);
+    border:4px solid #fff;
+    box-shadow:0 0 0 3px var(--violet), 0 2px 6px rgba(0,0,0,0.25);
+    z-index:2;
+  }
+  .tl-card{
+    background:#ffffff;
+    border:2px solid var(--violet-bg);
+    border-radius:16px;
+    padding:20px 22px;
+    box-shadow:0 4px 14px rgba(122,79,176,0.14);
+  }
+  .tl-card-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:14px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--violet-bg);
+  }
+  .tl-icon{
+    flex-shrink:0;
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    background:var(--violet-bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .tl-icon svg{ width:34px; height:34px; }
+  .tl-date{
+    display:inline-block;
+    font-size:0.78rem;
+    font-weight:bold;
+    color:#fff;
+    background:var(--violet);
+    padding:4px 13px;
+    border-radius:20px;
+    letter-spacing:0.2px;
+    margin-bottom:7px;
+  }
+  .tl-title{
+    font-weight:bold;
+    font-size:1.25rem;
+    color:var(--green-dark);
+    line-height:1.35;
+  }
 
   .card{
     background:#ffffff;
@@ -987,8 +1064,312 @@
   </div>
 </section>
 
+<section class="sec-timeline">
+  <h2>ציר הזמן: הרגעים הגדולים</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-icon">
+            <svg viewBox="0 0 64 64">
+              <rect x="10" y="14" width="44" height="38" rx="6" fill="#cdb8e8"/>
+              <rect x="10" y="14" width="44" height="10" rx="4" fill="#7a4fb0"/>
+              <circle cx="20" cy="10" r="3" fill="#7a4fb0"/>
+              <circle cx="44" cy="10" r="3" fill="#7a4fb0"/>
+              <path d="M32 44c-7-5-11-9-11-14 0-3.5 2.6-6 6-6 2.4 0 4 1.3 5 3 1-1.7 2.6-3 5-3 3.4 0 6 2.5 6 6 0 5-4 9-11 14z" fill="#c2486b"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tl-date">19.03.2026 — הדייט הראשון</div>
+            <div class="tl-title">"בסוף זה אירוע מיוחד"</div>
+          </div>
+        </div>
+        <p>שעה לפני שהם יוצאים, עופר עדיין מתלבט אם המאמץ מספיק:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">אני יכול ללכת מחר לקנות משהו</div>
+            <div class="wa-bubble">בסוף זה אירוע מיוחד
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p>אלית עוצרת את התוכנית הזו באיבה:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">לאלא עופר</div>
+            <div class="wa-bubble">אין מצב שתלך לקנות בגדים בשבילי</div>
+            <div class="wa-bubble">כולה דייט ראשון
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="wa-caption">התקציב הרשמי לדייט הראשון: אפס שקל על בגדים חדשים</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-icon">
+            <svg viewBox="0 0 64 64">
+              <path d="M12 26h10l16-10v32l-16-10H12a4 4 0 0 1-4-4v0a4 4 0 0 1 4-4z" fill="#7a4fb0"/>
+              <path d="M40 22c4 3 4 13 0 16" stroke="#5a3a8a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M46 16c7 6 7 22 0 28" stroke="#a78bc9" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tl-date">23.03.2026 — השמועה בעבודה</div>
+            <div class="tl-title">"כולם חושבים שאנחנו זוג"</div>
+          </div>
+        </div>
+        <p>ארבעה ימים אחרי הדייט, לפני ששניהם הודיעו על כך לנפש חיה, עופר מגלה שהמגזר כבר הקדים אותם:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">כולם חושבים שאנחנו זוג
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p>אלית בודקת אם זה מטריד אותו. הוא בוחר בגרסה הכי פחות מתלהבת שאפשר לנסח לדבר ששמח אותו:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">רע לך שחושבים שאנחנו זוג??
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">כן מאוד קשה לי עם הקונספט
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p class="wa-caption">הם עדיין לא הודיעו לאף אחד. אף אחד לא היה צריך שיודיעו</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-icon">
+            <svg viewBox="0 0 64 64">
+              <rect x="10" y="20" width="44" height="30" rx="6" fill="#7a4fb0"/>
+              <rect x="24" y="13" width="16" height="9" rx="3" fill="#5a3a8a"/>
+              <circle cx="32" cy="35" r="10" fill="#fff"/>
+              <circle cx="32" cy="35" r="6" fill="#5a3a8a"/>
+              <circle cx="46" cy="26" r="2.4" fill="#fbf3da"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tl-date">30.03.2026 — הנשיקה שצולמה</div>
+            <div class="tl-title">השכן הזקן עם מצלמת האבטחה</div>
+          </div>
+        </div>
+        <p>הם מתחבקים ומתנשקים ליד המחסום בכניסה לבניין שלה — בלי לשים לב שלשכן הישן יש מצלמה מכוונת ישר לשם, ושהוא מדווח לאימא שלה על הכל:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">ואתמול בדיוק התחבקנו שם והתנשקנו</div>
+            <div class="wa-bubble">אז עכשיו השכן התקשר לאימא שלי</div>
+            <div class="wa-bubble">מה הסיכויים שהוא מתקשר אליי כדי לדווח לי שהוא ראה אתכם אתמול)
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p>עופר, שמודיע מי הסוטה האמיתי כאן:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">איזה סוטה
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p class="wa-caption">הנשיקה הראשונה שלהם בחוץ תועדה בוידאו — לא על ידם</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-icon">
+            <svg viewBox="0 0 64 64">
+              <path d="M32 52C16 40 8 29 8 19c0-8 6-13 13-13 5 0 9 3 11 7 2-4 6-7 11-7 7 0 13 5 13 13 0 10-8 21-24 33z" fill="#c2486b"/>
+              <path d="M44 10l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#fff" opacity="0.85"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tl-date">06.04.2026, 00:41 — ה"אני אוהב/ת אותך" הראשון</div>
+            <div class="tl-title">משלוש מילים לחתונה בתוך דקה</div>
+          </div>
+        </div>
+        <p>אחרי לילה רגיל של שיחה, עופר מודה שמשהו קצת לוחץ לו:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">ואני מתגעגע שתדעי</div>
+            <div class="wa-bubble">קצת כאילו
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p>אלית שמה לב לאן זה הולך, ומחליטה לא להשאיר אותו תלוי:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">אני רואה</div>
+            <div class="wa-bubble">שקשה לך</div>
+            <div class="wa-bubble">אז אני אגיד</div>
+            <div class="wa-bubble">שאני אוהבת אותך
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p>עופר עונה תוך שניות, ובדרך שלו בלבד:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">אני אוהב אותך מפגרת
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p>תגובת אלית מגיעה בפרץ אחד, בלי סדר פיסוקי ברור:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">תחת</div>
+            <div class="wa-bubble">הלחצת אותי</div>
+            <div class="wa-bubble">וואוווווווווווווווו
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p>פחות מדקה אחר כך, היא כבר קופצת היישר לתכנון העתיד:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">נתחתן אז מחר
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">סגור
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p class="wa-caption">מהצהרת אהבה ראשונה להצעת נישואין — תוך פחות מדקה, בלי לקום מהמיטה</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-icon">
+            <svg viewBox="0 0 64 64">
+              <rect x="14" y="30" width="22" height="20" rx="3" fill="#7a4fb0"/>
+              <rect x="20" y="24" width="10" height="8" rx="2" fill="#5a3a8a"/>
+              <path d="M40 18l18 10-7 2-4 6-3-7-9-3z" fill="#a78bc9"/>
+              <path d="M40 18l-3 9" stroke="#5a3a8a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tl-date">19.04.2026 — הטיול הראשון שלהם</div>
+            <div class="tl-title">משא ומתן על 3 הקילו של אלית</div>
+          </div>
+        </div>
+        <p>שבועיים אחרי ה"אני אוהב אותך", הם יושבים ומזמינים את הטיסות לטיול הראשון שלהם ביחד. עופר מנסה לחסוך:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">20 קילו
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p>אלית לא מקבלת את זה כתשובה סופית:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">מה???????????????????</div>
+            <div class="wa-bubble">זה כלום ושום דבר</div>
+            <div class="wa-bubble">קמצנים
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p>עופר מזכיר לה את משך הטיול. אלית לא מתרגשת:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">תזכרי!!! שאנחנו טסים ל4 ימים
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">אני רוצה את ה3 ק״ג שלי
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p class="wa-caption">החתונה כבר סגורה מהשבוע שעבר. המזוודות עדיין בדיון</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-icon">
+            <svg viewBox="0 0 64 64">
+              <rect x="12" y="10" width="40" height="46" rx="5" fill="#fff" stroke="#7a4fb0" stroke-width="3"/>
+              <rect x="22" y="6" width="20" height="8" rx="3" fill="#7a4fb0"/>
+              <circle cx="20" cy="25" r="3.4" fill="#c2486b"/>
+              <circle cx="20" cy="35" r="3.4" fill="#2f6fa8"/>
+              <circle cx="20" cy="45" r="3.4" fill="#1f8a8a"/>
+              <path d="M27 25h17M27 35h17M27 45h11" stroke="#a78bc9" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="tl-date">08.05.2026 — התכנון לסופ"ש</div>
+            <div class="tl-title">שלוש אופציות, מדורגות מהטובה לגרועה</div>
+          </div>
+        </div>
+        <p>בלי שום בקשה מצידו, אלית שולחת לעופר תוכנית סופ"ש מסודרת בתור הודעה אחת, ממוספרת:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">יש שלוש אופציות:<br>1. אני באה לישון אצלך וקמה ב6 בבוקר ואתה מקפיץ אותי לרכבת<br>2. אתה בא לישון אצלי וקם ב8:30 איתי, מוציאים את פישוטו, אוכלים בוקר ואז אתה יוצא לבית שלך להשלים שיעורים<br>3. נפגשים בראשון בסינמה לראות את הסרט ואז כל אחד לביתו שלו
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p>ומיד אחר כך, בלי שמישהו ביקש, גם הדירוג הרשמי:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">בעיניי זה מסודר לפני הסדר ההפוך- 3 האופציה הכי טובה ו1 האופציה הכי גרועה</div>
+            <div class="wa-bubble">תבחר מה שבא לך
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p>עופר, שמבין בדיוק עם מי יש לו את הכבוד:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">עשית עבודת מחקר על האם להביא את פישוטו לגבעתיים או לא</div>
+            <div class="wa-bubble">אני גם חושב שאופציה 3 הכי טובה
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="wa-caption">תכנון סופ"ש מסודר יותר מתוכנית טיסה, כולל ניתוח עלות-תועלת לכלב</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section class="sec-yelp">
-  <h2>ביקורת יֶלפּ על הזוגיות: עופר ואלית</h2>
+  <h2>ביקורת yelp על הזוגיות: עופר ואלית</h2>
   <div class="card yelp-card">
 
     <div class="yelp-logo-row">
@@ -1007,7 +1388,7 @@
     </div>
 
     <div class="yelp-reviewer">
-      <div class="yelp-avatar">B</div>
+      <div class="yelp-avatar">P</div>
       <div>
         <div class="yelp-reviewer-name">פישוטו.ד</div>
         <div class="yelp-reviewer-stats">קרא 130,000 הודעות · ביקורת 1</div>
