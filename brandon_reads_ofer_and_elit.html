@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>עופר ואלית — הקריאה</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --panel:#f4faf6;
+    --green:#1f7a4d;
+    --green-dark:#0f4d30;
+    --green-soft:#7fb89a;
+    --line:#2f8f5b;
+    --text:#1c1c1c;
+    --muted:#5b6b62;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI','Arial Hebrew','Trebuchet MS',sans-serif;
+    line-height:1.7;
+  }
+  .hero{
+    position:relative;
+    text-align:center;
+    padding:55px 20px 40px;
+    border-bottom:3px solid var(--line);
+    background:var(--panel);
+  }
+  .hero img{
+    width:210px;
+    height:210px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid var(--green);
+    box-shadow:0 0 0 6px #ffffff, 0 0 0 9px var(--green-soft);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:2rem;
+    margin:0 auto;
+    max-width:700px;
+    letter-spacing:0.2px;
+    color:var(--green-dark);
+  }
+  .hero .subtitle{
+    color:var(--muted);
+    font-size:1.02rem;
+    font-style:italic;
+    margin-top:10px;
+  }
+  main{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 20px 80px;
+  }
+  .intro{
+    color:var(--muted);
+    font-size:1.05rem;
+    margin:45px 0 50px;
+    text-align:center;
+    padding:0 10px;
+  }
+  section{
+    margin-bottom:55px;
+  }
+  h2{
+    font-size:1.5rem;
+    color:var(--green-dark);
+    border-bottom:2px solid var(--line);
+    padding-bottom:10px;
+    margin-bottom:22px;
+    letter-spacing:0.2px;
+  }
+  .card{
+    background:#ffffff;
+    border-radius:14px;
+    padding:26px 28px;
+    border:2px solid var(--line);
+  }
+  .profile-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:680px){ .profile-grid{grid-template-columns:1fr;} }
+  .profile-card h3{
+    color:var(--green-dark);
+    margin-top:0;
+    font-size:1.15rem;
+    line-height:1.4;
+  }
+  .profile-card .nick{
+    color:var(--green);
+    font-style:italic;
+    display:block;
+    margin-bottom:14px;
+    font-size:0.92rem;
+  }
+  blockquote{
+    border-right:3px solid var(--green);
+    margin:16px 0 0;
+    padding:8px 16px;
+    color:var(--muted);
+    font-size:0.9rem;
+    font-style:italic;
+    background:var(--panel);
+  }
+  .metaphor-line{
+    font-size:1.2rem;
+    color:var(--green-dark);
+    text-align:center;
+    font-style:italic;
+    margin-bottom:18px;
+    font-weight:bold;
+  }
+  dl{margin:0;}
+  dt{
+    color:var(--green-dark);
+    font-weight:bold;
+    margin-top:20px;
+    font-size:1.05rem;
+  }
+  dd{
+    margin-right:0;
+    color:var(--text);
+  }
+  dd .src{
+    color:var(--muted);
+    font-size:0.85rem;
+    display:block;
+    margin-top:4px;
+  }
+  .awards{
+    display:grid;
+    gap:16px;
+  }
+  .award{
+    background:var(--panel);
+    border-radius:12px;
+    padding:16px 20px;
+    border:2px dashed var(--green-soft);
+  }
+  .award .title{
+    color:var(--green-dark);
+    font-weight:bold;
+    margin-bottom:4px;
+    font-size:1.03rem;
+  }
+  .award .winner{
+    color:var(--green);
+    font-size:0.9rem;
+  }
+  .yelp{
+    text-align:center;
+  }
+  .stars{
+    font-size:2.2rem;
+    color:var(--green);
+    letter-spacing:8px;
+    margin:10px 0 20px;
+  }
+  .rating-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    max-width:500px;
+    margin:0 auto 22px;
+    text-align:right;
+  }
+  .rating-grid div{
+    background:var(--panel);
+    border:1px solid var(--green-soft);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:0.88rem;
+  }
+  .rating-grid span{
+    color:var(--green-dark);
+    font-weight:bold;
+    display:block;
+    font-size:0.95rem;
+  }
+  .yelp-review p{
+    text-align:right;
+  }
+  .yelp-meta{
+    color:var(--muted);
+    font-size:0.85rem;
+    margin-top:18px;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.85rem;
+    padding:30px 0;
+    border-top:3px solid var(--line);
+    background:var(--panel);
+  }
+  .divider{
+    width:60px;
+    height:3px;
+    background:var(--green);
+    margin:0 auto 25px;
+    border-radius:3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="couple.jpeg" alt="עופר ואלית">
+  <h1>שני מאפיינים שמחתימים אחד את השני בלי הפסקה</h1>
+  <div class="subtitle">130,000 הודעות, אישור הדדי על כל דבר, וכלב אחד שמקבל פטור מתשאול</div>
+</div>
+
+<main>
+
+<p class="intro">בזוגיות הזו אף החלטה לא עוברת בלי חותמת. לא איזה מסעדה, לא איזו תמונה לשלוח, ולא אם מותר לעשות ספונג'ה בשעה הזאת. שניהם מאפיינים בביטחון נתב״ג, ומסתבר שכשמרוויחים מהבדיקה, מבדקים גם בבית. ההבדל היחיד הוא שבעבודה יש להם נוסעים לתשאל, ובבית יש להם רק אחד את השני — אז זה מה שיוצא.</p>
+
+<section>
+  <h2>פרופיל: אלית, או "הקצינה שמתרגשת מנשק יותר משהיא מתרגשת מפרחים"</h2>
+  <div class="card profile-card">
+    <p>אלית מנגנת בפסנתר 17 שנה, אוהבת "באמת הכל" במוזיקה, ועברה תוך חודש מקלאסי דרך אביתר בנאי ללטיני — נשמע כמו נשמה רגישה ומורכבת. ואז היא רואה תמונה של עופר אוחז ברובה ומאבדת שליטה לגמרי: "וואו זה יחרמן אותי בטירוף", "ככה אני רוצה שתאחוז בי". היא עוקבת ביוטיוב אחרי בחור שמפרק ומרכיב נשקים על המסך ומכריזה בלי בושה "אני מכורה אליו". זה לא סתירה אצלה, זה בדיוק התמהיל: רגישה כשזה נוגע לאנשים, חדה כתער כשזה נוגע לעקרונות.</p>
+    <p>ואותם עקרונות הם לא דבר להתעסק איתם בקלות ראש. כשאלכס קרא לה "פיק מי" דרך אור, היא לא שכחה את זה ימים — וגם לא הניחה לעופר עד שהבטיח לה רשמית שהיא לא אחת מהן. אבל לעצמה היא הכי לא סולחת: תמונה רגילה בחום הופכת מיד ל"אני נראית כמו תפוח אדמה", וגופייה אהובה הופכת ל"ממחזרת בגדים כי את ענייה?" שהיא בעצמה מסכימה איתו עליה תוך שנייה.</p>
+    <blockquote>"אני ממש אוהבת נשקים, בטירוף... קיצר אני ממש אוהבת" — על תחביב שלא היה בתוכנית של אף אחד</blockquote>
+  </div>
+</section>
+
+<section>
+  <h2>פרופיל: עופר, או "הסטודנט שמנהל משא ומתן יומי עם עצמו על כמה הוא שונא ללמוד"</h2>
+  <div class="card profile-card">
+    <p>עופר מתלונן על כל מבחן לפני שהוא נכתב, מצליח בו בכל זאת (91, 93, ועוד פעם "93 אני מבקש"), ומתלונן שוב על הבא בתור. הוא לוקח נוספות במשמרת בזמן שהוא "שונא את עצמו", ואז מסביר את לוח הזמנים שלו במונחים שאלית בעצמה אומרת שהיא "לא מבינה אבל בסדר, מה שעושה לך טוב". זאת לא עצלנות — זאת דרכו להתלונן על משהו שהוא ממש לא הולך להפסיק לעשות.</p>
+    <p>מתחת לציניות יש מישהו שסופר כל פרט: התנצל על שנרדם כי המתין לה לצאת מהמקלחת, מתעקש לוודא ש"המטאפורה הועברה כראוי" אחרי כל בדיחה, ושולח שורת לבבות מתוך התרגשות אחרי "תצאי, אני צחקתי". וכשאלית משווה את אחיזת הנשק שלו בתמונה לזמר של אואזיס ב-Wonderwall, הוא לא מכחיש, הוא הולך לבדוק אם יש לו תמונה נוספת. זה כל הסיפור של עופר: משחק את הבחור הקריר, רץ פנימה לבדוק את עצמו במראה.</p>
+    <blockquote>"בוודאות אני שונא את עצמי אחרת לא הייתי יוצא רצים" — על משהו שהוא בכל זאת עשה כמה דקות אחר כך</blockquote>
+  </div>
+</section>
+
+<section>
+  <h2>המטאפורה</h2>
+  <div class="card">
+    <p class="metaphor-line">זו לא זוגיות. זה דלפק ביקורת גבולות שבו שניהם גם הנוסעים וגם הבודקים.</p>
+    <p>כל דבר בזוגיות הזו עובר אישור: "תודה על האישור בוס" על משמרת נוספת, "יש אישור אני יכול להבין" על תוכנית לערב, ואפילו בדיחה צריכה חותמת רשמית — "המטאפורה הועברה? הועברה כראוי". אלית עצמה מתפקדת בעבודה כמי שמחתימה ונותנת מעבר, ועופר קרא לה על זה "גברת חותמת מקטאר" — וזה דבק, כי זה פשוט מתאר אותה גם בבית: שום דבר לא עובר בלי שהיא תבדוק, תאשר, ותחתום.</p>
+  </div>
+</section>
+
+<section>
+  <h2>המילון הפרטי שלכם</h2>
+  <div class="card">
+    <dl>
+      <dt>גברת חותמת מקטאר</dt>
+      <dd>הכינוי שעופר הדביק לאלית אחרי שהיא שלחה לו את לוח המשמרות שלה בפורמט רשמי-להפליא. נדבק כי הוא פשוט מדויק.<span class="src">"מאוד רשמי" / "גברת חותמת מקטאר"</span></dd>
+
+      <dt>Yeeyee guy</dt>
+      <dd>היוטיובר שמפרק ומרכיב נשקים על המסך שאלית "מכורה אליו" — הבסיס לכל פעם שעופר מתבל אותה ב"צהובה" כשמדובר בנשק.<span class="src">"הוא יורה בדברים עם כל מיני רובים ואקדחים... ואני מכורה אליו"</span></dd>
+
+      <dt>פישוטו</dt>
+      <dd>הכלב, עם ציר זמן רשמי לאימוץ (22/6/2025) שמצולב מול תאריך השחרור מהצבא של אלית — הצד היחיד בזוגיות שפטור מתשאול.</dd>
+
+      <dt>שושי</dt>
+      <dd>הכינוי שעופר שולף כשמתברר שהמיטה לא מסודרת — תגובה שלא נשארת בלי מענה.<span class="src">"את המיטה סליחה... שושי" / "שושי!!!!!!!!!!!"</span></dd>
+
+      <dt>כלבבי</dt>
+      <dd>כינוי חיבה משולב שעופר ממציא — חצי "כלב" (על שם פישוטו), חצי "לבבי" — ומשתמש בו בלי הסבר, כאילו זה כינוי קבוע מאז ומתמיד.</dd>
+
+      <dt>פיק מי</dt>
+      <dd>העלבון שאלכס הטיח באלית דרך אור, ושלא ירד ממנה ימים — עד שעופר נאלץ להבטיח לה רשמית שהיא לא אחת מהן.<span class="src">"איזה פיק מי היא" / "את לא אחת מהן"</span></dd>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <h2>פרסי האקדמיה של הזוג</h2>
+  <div class="card awards">
+
+    <div class="award">
+      <div class="title">הכינוי הכי לא צפוי בקטגוריית חיבה</div>
+      <div class="winner">זוכה: כלבבי ושושי</div>
+      <p>בתוך כמה הודעות אלית עוברת בין "מותק שלי" ו"מיי לאב" לבין "טמבל" ו"שושי" — וכל הכינויים בתוקף במקביל. אף אחד מהם לא מתיישן.</p>
+    </div>
+
+    <div class="award">
+      <div class="title">התחביב שהפתיע את כולם, כולל אותה</div>
+      <div class="winner">זוכה: אלית</div>
+      <p>שבע עשרה שנות פסנתר קלאסי, ואז התרגשות בלתי נשלטת מתמונת רובה. "ככה אני רוצה שתאחוז בי" נאמר בלי שום אירוניה.</p>
+    </div>
+
+    <div class="award">
+      <div class="title">ניהול המשא ומתן הביטחוני-תזונתי הטוב ביותר בנופש</div>
+      <div class="winner">זוכה: אלית</div>
+      <p>שכנעה את עופר שחצי פנסיון מספיק, נימקה את זה בעדות מהדר שהתפוצץ מאוכל, וסגרה את כל הדיון במשפט אחד: "תסמוך עליי".</p>
+    </div>
+
+    <div class="award">
+      <div class="title">השקר הכי הגון</div>
+      <div class="winner">זוכה: אלית</div>
+      <p>הספיקה לרכבת, ובמקום להודות שטעתה בחישוב הזמן, הכריזה שהיא "שיקרה" — כי שקר נשמע פחות מביך מטעות.</p>
+    </div>
+
+    <div class="award">
+      <div class="title">ההתנצלות הטובה ביותר בתפקיד משני</div>
+      <div class="winner">זוכה: עופר</div>
+      <p>"סליחה שנרדמתי עלייך אתמול בלילה... אבל נפלתי" — איכשהו גורם לזה שהוא נרדם בזמן שהמתין לה לצאת מהמקלחת להישמע כמו תאונה טרגית ולא תכונת אופי.</p>
+    </div>
+
+    <div class="award">
+      <div class="title">חקירת הרקע היסודית ביותר שבוצעה על בן זוג</div>
+      <div class="winner">זוכה: אלית</div>
+      <p>שחזרה את התאריך המדויק שבו עופר התחיל להתעניין בה, על בסיס משמרות ותקלה שאורי קיבל. בלי הערות — היא צדקה.</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>ביקורת יֶלפּ על הזוגיות: עופר ואלית</h2>
+  <div class="card yelp">
+    <div class="stars">★★★★☆</div>
+    <div class="rating-grid">
+      <div>שירות ומענה<span>5/5</span></div>
+      <div>ניקיון ותחזוקה<span>3/5</span></div>
+      <div>תקציב נופש<span>4/5</span></div>
+      <div>שקיפות רגשית<span>4.5/5</span></div>
+    </div>
+    <div class="yelp-review">
+      <p><strong>4 מתוך 5 כוכבים.</strong> הגעתי בציפייה לזוגיות רגילה, עזבתי עם תיק מסודר על כל אי הבנה, כינוי לכל מצב רוח, וכלב עם תיעוד מסודר יותר משני בני האדם המארחים אותו.</p>
+      <p>שירות ומענה: מעולה, תגובה תוך דקה לכל הודעה, גם בעשר הודעות בודדות ברצף. ניקיון: נקודה רגישה — איום ספונג'ה אחד הצליח לעצור משק בית שלם. תקציב נופש: רמת מחקר שמתחרה בסוכן נסיעות מקצועי, כולל השוואת מחירים בין שלושה אתרי הזמנה בערב אחד.</p>
+      <p>הורדנו כוכב על כך שכל בדיחה דורשת אישור רשמי שהיא "הועברה כראוי" לפני שאפשר לעבור לנושא הבא. מומלץ למי שאוהב שהאהבה שלו מגיעה עם חותמת תקפה ושני עדים.</p>
+    </div>
+    <div class="yelp-meta">תיעוד מלא · 130,000 הודעות · גרסה מאומתת</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="divider"></div>
+  כל ציטוט אמיתי. שום בקשת אישור לא נדחתה בתהליך.
+</footer>
+
+</body>
+</html>

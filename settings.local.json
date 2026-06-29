@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"/c/Users/oferr/AppData/Local/Temp/claude/C--Users-oferr-OneDrive-Desktop-Chat-Analysis/956d9c14-9bfd-42ef-a6f4-f2626248dc04/scratchpad/chatextract\" && echo \"Ofer count:\" && grep -c \"Ofer Rind:\" chat.txt && echo \"Elit count:\" && grep -c \"Elit Shimdura\" chat.txt && echo \"voice/media:\" && grep -c \"Media omitted\" chat.txt && grep -c \"voice call\\\\|Missed voice\\\\|Missed video\" chat.txt)",
+      "Bash(cd \"/c/Users/oferr/OneDrive/Desktop\" && ls *.jpg *.jpeg *.png 2>/dev/null; ls -la 2>/dev/null | grep -i \"chat analysis\" )",
+      "WebFetch(domain:www.whatbrandonthinks.com)"
+    ]
+  }
+}
