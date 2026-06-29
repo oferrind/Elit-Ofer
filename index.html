@@ -13,6 +13,18 @@
     --line:#2f8f5b;
     --text:#1c1c1c;
     --muted:#5b6b62;
+
+    --rose:#c2486b;     --rose-bg:#fbe9ee;
+    --blue:#2f6fa8;     --blue-bg:#e8f1fa;
+    --indigo:#4a4fb0;   --indigo-bg:#edeefb;
+    --amber:#b5780f;    --amber-bg:#fdf1de;
+    --coral:#d1582f;    --coral-bg:#fceee7;
+    --violet:#7a4fb0;   --violet-bg:#f1eaf9;
+    --teal:#1f8a8a;     --teal-bg:#e4f5f5;
+    --slate:#55617a;    --slate-bg:#eceef2;
+    --gold:#a8870f;     --gold-bg:#fbf3da;
+    --purple:#8e3f8f;   --purple-bg:#f7eaf7;
+    --raisin:#5c3a21;   --raisin-bg:#f1e6d8;
   }
   *{box-sizing:border-box;}
   body{
@@ -25,21 +37,21 @@
   .hero{
     position:relative;
     text-align:center;
-    padding:55px 20px 40px;
+    padding:55px 20px 30px;
     border-bottom:3px solid var(--line);
     background:var(--panel);
   }
-  .hero img{
-    width:210px;
-    height:210px;
+  .hero img.couple{
+    width:200px;
+    height:200px;
     object-fit:cover;
     border-radius:50%;
     border:4px solid var(--green);
     box-shadow:0 0 0 6px #ffffff, 0 0 0 9px var(--green-soft);
-    margin-bottom:22px;
+    margin-bottom:20px;
   }
   .hero h1{
-    font-size:2rem;
+    font-size:1.95rem;
     margin:0 auto;
     max-width:700px;
     letter-spacing:0.2px;
@@ -47,9 +59,84 @@
   }
   .hero .subtitle{
     color:var(--muted);
-    font-size:1.02rem;
+    font-size:1.0rem;
     font-style:italic;
     margin-top:10px;
+  }
+  .msgbar-wrap{
+    max-width:480px;
+    margin:24px auto 0;
+  }
+  .msgbar-title{
+    font-size:0.85rem;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .msgbar{
+    display:flex;
+    width:100%;
+    height:34px;
+    border-radius:20px;
+    overflow:hidden;
+    border:2px solid var(--line);
+    background:#fff;
+  }
+  .msgbar .elit-seg{
+    background:var(--rose);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.82rem;
+    font-weight:bold;
+    white-space:nowrap;
+  }
+  .msgbar .ofer-seg{
+    background:var(--blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.82rem;
+    font-weight:bold;
+    white-space:nowrap;
+  }
+  .msgbar-note{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.78rem;
+    margin-top:6px;
+  }
+  .repeat-stats{
+    display:flex;
+    gap:14px;
+    max-width:480px;
+    margin:22px auto 0;
+  }
+  @media (max-width:520px){ .repeat-stats{flex-direction:column;} }
+  .repeat-card{
+    flex:1;
+    border-radius:12px;
+    padding:12px 14px;
+    text-align:center;
+  }
+  .repeat-card.is-elit{ background:var(--rose-bg); border:1.5px solid var(--rose); }
+  .repeat-card.is-ofer{ background:var(--blue-bg); border:1.5px solid var(--blue); }
+  .repeat-label{
+    font-size:0.72rem;
+    color:var(--muted);
+    margin-bottom:4px;
+  }
+  .repeat-word{
+    font-size:1.3rem;
+    font-weight:bold;
+  }
+  .repeat-card.is-elit .repeat-word{ color:var(--rose); }
+  .repeat-card.is-ofer .repeat-word{ color:var(--blue); }
+  .repeat-meta{
+    font-size:0.74rem;
+    color:var(--muted);
+    margin-top:3px;
   }
   main{
     max-width:880px;
@@ -69,16 +156,22 @@
   h2{
     font-size:1.5rem;
     color:var(--green-dark);
-    border-bottom:2px solid var(--line);
+    border-bottom:3px solid var(--accent, var(--line));
     padding-bottom:10px;
     margin-bottom:22px;
     letter-spacing:0.2px;
   }
+  .sec-profiles{ --accent:var(--teal); }
+  .sec-power{ --accent:var(--indigo); }
+  .sec-dict{ --accent:var(--amber); }
+  .sec-awards{ --accent:var(--coral); }
+  .sec-yelp{ --accent:var(--purple); }
+
   .card{
     background:#ffffff;
     border-radius:14px;
     padding:26px 28px;
-    border:2px solid var(--line);
+    border:2px solid var(--accent, var(--line));
   }
   .profile-grid{
     display:grid;
@@ -86,111 +179,306 @@
     gap:20px;
   }
   @media (max-width:680px){ .profile-grid{grid-template-columns:1fr;} }
-  .profile-card h3{
-    color:var(--green-dark);
-    margin-top:0;
-    font-size:1.15rem;
-    line-height:1.4;
+  .profile-card{
+    text-align:right;
   }
+  .profile-card.is-elit{ border-color:var(--rose); }
+  .profile-card.is-ofer{ border-color:var(--blue); }
+  .avatar{
+    display:block;
+    width:160px;
+    height:160px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    object-fit:cover;
+  }
+  .profile-card.is-elit .avatar{
+    border:5px solid var(--rose);
+    box-shadow:0 0 0 5px #fff, 0 0 0 8px var(--rose-bg);
+  }
+  .profile-card.is-ofer .avatar{
+    border:5px solid var(--blue);
+    box-shadow:0 0 0 5px #fff, 0 0 0 8px var(--blue-bg);
+  }
+  .profile-card h3{
+    margin-top:0;
+    font-size:1.2rem;
+    line-height:1.4;
+    text-align:center;
+  }
+  .profile-card.is-elit h3{ color:var(--rose); }
+  .profile-card.is-ofer h3{ color:var(--blue); }
   .profile-card .nick{
-    color:var(--green);
+    color:var(--muted);
     font-style:italic;
     display:block;
     margin-bottom:14px;
-    font-size:0.92rem;
-  }
-  blockquote{
-    border-right:3px solid var(--green);
-    margin:16px 0 0;
-    padding:8px 16px;
-    color:var(--muted);
     font-size:0.9rem;
-    font-style:italic;
-    background:var(--panel);
-  }
-  .metaphor-line{
-    font-size:1.2rem;
-    color:var(--green-dark);
     text-align:center;
-    font-style:italic;
-    margin-bottom:18px;
+  }
+  .profile-stat{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:0 auto 16px;
+    padding:8px 16px;
+    border-radius:30px;
+    width:fit-content;
+    background:var(--rose-bg);
+    border:1.5px solid var(--rose);
+  }
+  .profile-stat.is-ofer{
+    background:var(--blue-bg);
+    border-color:var(--blue);
+  }
+  .profile-stat .stat-num{
+    font-size:1.3rem;
     font-weight:bold;
+    color:var(--rose);
   }
-  dl{margin:0;}
-  dt{
-    color:var(--green-dark);
-    font-weight:bold;
-    margin-top:20px;
-    font-size:1.05rem;
+  .profile-stat.is-ofer .stat-num{
+    color:var(--blue);
   }
-  dd{
-    margin-right:0;
-    color:var(--text);
-  }
-  dd .src{
+  .profile-stat .stat-label{
+    font-size:0.78rem;
     color:var(--muted);
-    font-size:0.85rem;
-    display:block;
-    margin-top:4px;
+    text-align:right;
+    line-height:1.3;
   }
-  .awards{
-    display:grid;
-    gap:16px;
+
+  /* ===== WhatsApp-style message bubble ===== */
+  .wa-row{
+    display:flex;
+    flex-direction:column;
+    margin:14px 0 6px;
   }
-  .award{
-    background:var(--panel);
-    border-radius:12px;
-    padding:16px 20px;
-    border:2px dashed var(--green-soft);
-  }
-  .award .title{
-    color:var(--green-dark);
+  .wa-row.elit{ align-items:flex-end; }
+  .wa-row.ofer{ align-items:flex-start; }
+  .wa-who{
+    font-size:0.72rem;
     font-weight:bold;
     margin-bottom:4px;
-    font-size:1.03rem;
   }
-  .award .winner{
-    color:var(--green);
-    font-size:0.9rem;
+  .wa-row.elit .wa-who{ color:var(--rose); }
+  .wa-row.ofer .wa-who{ color:var(--blue); }
+  .wa-stack{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
   }
-  .yelp{
-    text-align:center;
-  }
-  .stars{
-    font-size:2.2rem;
-    color:var(--green);
-    letter-spacing:8px;
-    margin:10px 0 20px;
-  }
-  .rating-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    max-width:500px;
-    margin:0 auto 22px;
-    text-align:right;
-  }
-  .rating-grid div{
-    background:var(--panel);
-    border:1px solid var(--green-soft);
+  .wa-row.elit .wa-stack{ align-items:flex-end; }
+  .wa-row.ofer .wa-stack{ align-items:flex-start; }
+  .wa-bubble{
+    position:relative;
+    display:inline-block;
+    padding:6px 9px 7px;
     border-radius:8px;
-    padding:8px 12px;
-    font-size:0.88rem;
-  }
-  .rating-grid span{
-    color:var(--green-dark);
-    font-weight:bold;
-    display:block;
+    font-family:'Segoe UI', Helvetica, Arial, sans-serif;
     font-size:0.95rem;
-  }
-  .yelp-review p{
+    line-height:1.4;
+    max-width:380px;
+    box-shadow:0 1px 0.5px rgba(11,20,26,0.13);
     text-align:right;
   }
-  .yelp-meta{
+  .wa-row.elit .wa-bubble{
+    background:#d9fdd3;
+    color:#111b21;
+    border-bottom-right-radius:2px;
+  }
+  .wa-row.ofer .wa-bubble{
+    background:#ffffff;
+    color:#111b21;
+    border:1px solid #ededed;
+    border-bottom-left-radius:2px;
+  }
+  .wa-row.elit .wa-stack .wa-bubble:not(:last-child){ border-bottom-right-radius:8px; }
+  .wa-row.ofer .wa-stack .wa-bubble:not(:last-child){ border-bottom-left-radius:8px; }
+  .wa-tail{ position:absolute; bottom:-1px; width:8px; height:13px; }
+  .wa-row.elit .wa-tail{ right:-7px; }
+  .wa-row.ofer .wa-tail{ left:-7px; transform:scaleX(-1); }
+  .wa-row.elit .wa-tail path{ fill:#d9fdd3; }
+  .wa-row.ofer .wa-tail path{ fill:#ffffff; stroke:#ededed; stroke-width:1; }
+  .wa-stack .wa-bubble:not(:last-child) .wa-tail{ display:none; }
+  .wa-caption{
     color:var(--muted);
     font-size:0.85rem;
-    margin-top:18px;
+    font-style:italic;
+    margin-top:8px;
+    text-align:right;
   }
+
+  /* ===== big icon illustration blocks ===== */
+  .illus{
+    width:84px;
+    height:84px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .illus svg{ width:50px; height:50px; }
+  @media (max-width:560px){
+    .illus{ width:64px; height:64px; }
+    .illus svg{ width:38px; height:38px; }
+  }
+
+  .row{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+  }
+  .row + .row{ margin-top:26px; }
+
+  .ico-amber{ background:var(--amber-bg); color:var(--amber); }
+  .ico-blue{ background:var(--blue-bg); color:var(--blue); }
+  .ico-gold{ background:var(--gold-bg); color:var(--gold); }
+  .ico-violet{ background:var(--violet-bg); color:var(--violet); }
+  .ico-rose{ background:var(--rose-bg); color:var(--rose); }
+  .ico-indigo{ background:var(--indigo-bg); color:var(--indigo); }
+  .ico-slate{ background:var(--slate-bg); color:var(--slate); }
+  .ico-teal{ background:var(--teal-bg); color:var(--teal); }
+  .ico-coral{ background:var(--coral-bg); color:var(--coral); }
+  .ico-raisin{ background:var(--raisin-bg); color:var(--raisin); }
+  .dict-term.c-raisin{color:var(--raisin);}
+
+  .dict-term{
+    font-weight:bold;
+    font-size:1.1rem;
+    margin:0 0 4px;
+  }
+  .dict-term.c-amber{color:var(--amber);}
+  .dict-term.c-blue{color:var(--blue);}
+  .dict-term.c-gold{color:var(--gold);}
+  .dict-term.c-violet{color:var(--violet);}
+  .dict-body{ width:100%; }
+  .dict-body p{ margin:0; }
+
+  .power-card{
+    border-color:var(--indigo);
+    background:var(--indigo-bg);
+  }
+
+  .award{
+    border-radius:14px;
+    padding:18px 20px;
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+  }
+  .award-rose{ background:var(--rose-bg); border:2px solid var(--rose); }
+  .award-indigo{ background:var(--indigo-bg); border:2px solid var(--indigo); }
+  .award-slate{ background:var(--slate-bg); border:2px solid var(--slate); }
+  .award-teal{ background:var(--teal-bg); border:2px solid var(--teal); }
+  .award-gold{ background:var(--gold-bg); border:2px solid var(--gold); }
+  .award-coral{ background:var(--coral-bg); border:2px solid var(--coral); }
+  .award .title{
+    font-weight:bold;
+    margin-bottom:4px;
+    font-size:1.05rem;
+  }
+  .award-rose .title{ color:var(--rose); }
+  .award-indigo .title{ color:var(--indigo); }
+  .award-slate .title{ color:var(--slate); }
+  .award-teal .title{ color:var(--teal); }
+  .award-gold .title{ color:var(--gold); }
+  .award-coral .title{ color:var(--coral); }
+  .award .winner{
+    color:var(--muted);
+    font-size:0.85rem;
+    margin-bottom:6px;
+  }
+  .award > div:not(.illus){ width:100%; }
+  .award p{ margin:0; }
+  .awards{
+    display:grid;
+    gap:18px;
+  }
+
+  /* ===== Yelp-style review card ===== */
+  .yelp-card{
+    text-align:right;
+  }
+  .yelp-logo-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    margin-bottom:20px;
+  }
+  .yelp-logo-text{
+    font-size:1.9rem;
+    font-weight:800;
+    font-style:italic;
+    color:#d32323;
+    letter-spacing:-0.5px;
+    font-family:Georgia,'Times New Roman',serif;
+  }
+  .yelp-burst{ width:24px; height:24px; flex-shrink:0; }
+  .yelp-biz{
+    text-align:center;
+    padding-bottom:18px;
+    border-bottom:1px solid #ececec;
+    margin-bottom:20px;
+  }
+  .yelp-biz-name{ font-size:1.45rem; margin:0 0 6px; color:var(--text); }
+  .yelp-biz-meta{ color:var(--muted); font-size:0.85rem; margin-bottom:12px; }
+  .yelp-agg{ display:flex; align-items:center; justify-content:center; gap:9px; }
+  .yelp-agg-score{ font-size:1.6rem; font-weight:bold; color:var(--text); }
+  .yelp-stars{ color:#d32323; font-size:1.25rem; letter-spacing:2px; }
+  .yelp-agg-count{ color:var(--muted); font-size:0.85rem; }
+
+  .yelp-reviewer{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:12px;
+  }
+  .yelp-avatar{
+    width:50px; height:50px; border-radius:50%;
+    background:#6a3fa0; color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:bold; font-size:1.3rem; flex-shrink:0;
+  }
+  .yelp-reviewer-name{ font-weight:bold; font-size:1rem; }
+  .yelp-reviewer-stats{ color:var(--muted); font-size:0.78rem; margin-top:2px; }
+
+  .yelp-review-stars-row{
+    display:flex; align-items:center; gap:10px; margin-bottom:14px;
+  }
+  .yelp-review-stars-row .yelp-stars{ font-size:1.1rem; }
+  .yelp-review-date{ color:var(--muted); font-size:0.8rem; }
+
+  .yelp-review-body p{ text-align:right; margin:0 0 12px; }
+  .yelp-review-body p:last-child{ margin-bottom:0; }
+
+  .yelp-detail-chips{
+    display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 18px;
+  }
+  .yelp-chip{
+    border:1px solid #e3e3e3; border-radius:16px; padding:5px 12px; font-size:0.8rem; color:var(--muted);
+    display:flex; gap:6px; align-items:center; background:#fafafa;
+  }
+  .yelp-chip .yelp-stars{ font-size:0.78rem; letter-spacing:1px; }
+
+  .yelp-actions{
+    display:flex; gap:10px; border-top:1px solid #ececec; padding-top:16px; margin-top:6px;
+    flex-wrap:wrap;
+  }
+  .yelp-actions button{
+    border:1px solid #d8d8d8; background:#fff; border-radius:20px; padding:7px 14px;
+    font-size:0.82rem; color:var(--text); display:flex; align-items:center; gap:6px;
+    font-family:inherit;
+  }
+  .yelp-actions svg{ width:16px; height:16px; }
+  .yelp-meta-foot{
+    color:var(--muted);
+    font-size:0.78rem;
+    margin-top:16px;
+    text-align:center;
+  }
+
   footer{
     text-align:center;
     color:var(--muted);
@@ -211,125 +499,555 @@
 <body>
 
 <div class="hero">
-  <img src="couple.jpeg" alt="עופר ואלית">
-  <h1>שני מאפיינים שמחתימים אחד את השני בלי הפסקה</h1>
-  <div class="subtitle">130,000 הודעות, אישור הדדי על כל דבר, וכלב אחד שמקבל פטור מתשאול</div>
+  <img class="couple" src="couple.jpeg" alt="עופר ואלית">
+  <h1>ראש הצוות והמאפיינת שמתשאלים אחד את השני בלי הפסקה</h1>
+  <div class="subtitle">130,000 הודעות, משמרת אחת מפוקחת, וכלב אחד עם שני שמות</div>
+
+  <div class="msgbar-wrap">
+    <div class="msgbar-title">מי כותב יותר?</div>
+    <div class="msgbar">
+      <div class="elit-seg" style="width:58%">אלית · 58% · 74,122</div>
+      <div class="ofer-seg" style="width:42%">עופר · 42% · 54,022</div>
+    </div>
+    <div class="msgbar-note">אלית שולחת בערך הודעה וחצי על כל הודעה של עופר</div>
+  </div>
+
+  <div class="repeat-stats">
+    <div class="repeat-card is-elit">
+      <div class="repeat-label">ההודעה החזרתית ביותר של אלית</div>
+      <div class="repeat-word">"וואו"</div>
+      <div class="repeat-meta">635 פעמים · 0.86% מההודעות שלה</div>
+    </div>
+    <div class="repeat-card is-ofer">
+      <div class="repeat-label">ההודעה החזרתית ביותר של עופר</div>
+      <div class="repeat-word">"יופי"</div>
+      <div class="repeat-meta">231 פעמים · 0.43% מההודעות שלו</div>
+    </div>
+  </div>
 </div>
 
 <main>
 
-<p class="intro">בזוגיות הזו אף החלטה לא עוברת בלי חותמת. לא איזה מסעדה, לא איזו תמונה לשלוח, ולא אם מותר לעשות ספונג'ה בשעה הזאת. שניהם מאפיינים בביטחון נתב״ג, ומסתבר שכשמרוויחים מהבדיקה, מבדקים גם בבית. ההבדל היחיד הוא שבעבודה יש להם נוסעים לתשאל, ובבית יש להם רק אחד את השני — אז זה מה שיוצא.</p>
+<p class="intro">עופר ראש צוות (רצ) בביטחון נתב״ג, אלית מאפיינת. בעבודה ההיררכיה ברורה. בבית — לא בטוח. שום החלטה לא עוברת בלי בדיקה: לא איזו מסעדה, לא איזו תמונה לשלוח, ולא אם מותר לעשות ספונג'ה בשעה הזאת.</p>
 
-<section>
-  <h2>פרופיל: אלית, או "הקצינה שמתרגשת מנשק יותר משהיא מתרגשת מפרחים"</h2>
-  <div class="card profile-card">
-    <p>אלית מנגנת בפסנתר 17 שנה, אוהבת "באמת הכל" במוזיקה, ועברה תוך חודש מקלאסי דרך אביתר בנאי ללטיני — נשמע כמו נשמה רגישה ומורכבת. ואז היא רואה תמונה של עופר אוחז ברובה ומאבדת שליטה לגמרי: "וואו זה יחרמן אותי בטירוף", "ככה אני רוצה שתאחוז בי". היא עוקבת ביוטיוב אחרי בחור שמפרק ומרכיב נשקים על המסך ומכריזה בלי בושה "אני מכורה אליו". זה לא סתירה אצלה, זה בדיוק התמהיל: רגישה כשזה נוגע לאנשים, חדה כתער כשזה נוגע לעקרונות.</p>
-    <p>ואותם עקרונות הם לא דבר להתעסק איתם בקלות ראש. כשאלכס קרא לה "פיק מי" דרך אור, היא לא שכחה את זה ימים — וגם לא הניחה לעופר עד שהבטיח לה רשמית שהיא לא אחת מהן. אבל לעצמה היא הכי לא סולחת: תמונה רגילה בחום הופכת מיד ל"אני נראית כמו תפוח אדמה", וגופייה אהובה הופכת ל"ממחזרת בגדים כי את ענייה?" שהיא בעצמה מסכימה איתו עליה תוך שנייה.</p>
-    <blockquote>"אני ממש אוהבת נשקים, בטירוף... קיצר אני ממש אוהבת" — על תחביב שלא היה בתוכנית של אף אחד</blockquote>
+<section class="sec-profiles">
+  <h2>הפרופילים</h2>
+  <div class="profile-grid">
+
+    <div class="card profile-card is-elit">
+      <img class="avatar" src="elit_face.jpg" alt="אלית">
+      <h3>אלית</h3>
+      <span class="nick">"המאפיינת שמתרגשת מנשק יותר משהיא מתרגשת מפרחים"</span>
+      <div class="profile-stat">
+        <span class="stat-num">98</span>
+        <span class="stat-label">פעמים בצ׳אט<br>שכתבה "אני עייפה"</span>
+      </div>
+      <p>אלית מנגנת בפסנתר 17 שנה, אוהבת "באמת הכל" במוזיקה, ועברה תוך חודש מקלאסי דרך אביתר בנאי ללטיני — נשמע כמו נשמה רגישה ומורכבת. ואז היא רואה תמונה של עופר אוחז ברובה ומאבדת שליטה לגמרי:</p>
+
+      <div class="wa-row elit">
+        <div class="wa-who">אלית</div>
+        <div class="wa-stack">
+          <div class="wa-bubble">וואו זה יחרמן אותי בטירוף</div>
+          <div class="wa-bubble">ככה אני רוצה שתאחוז בי
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <p>כמאפיינת היא עוברת תשאול נוסעים כל יום, ושואפת להתקדם רשמית לתפקיד חוקרת:</p>
+
+      <div class="wa-row elit">
+        <div class="wa-who">אלית</div>
+        <div class="wa-bubble">אם אני ארצה להתקדם במשהו זה יהיה תשאול
+          <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+        </div>
+      </div>
+
+      <p>בבית היא לא מחכה לתפקיד הרשמי, היא פשוט מתחילה לתשאל. אותם עקרונות הם לא דבר להתעסק איתו בקלות ראש. כשאלכס קרא לה "פיק מי", היא לא שכחה את זה ימים — וגם לא הניחה לעופר עד שהבטיח לה רשמית שהיא לא אחת מהן.</p>
+
+      <div class="wa-row elit">
+        <div class="wa-who">אלית</div>
+        <div class="wa-bubble">אני ממש אוהבת נשקים, בטירוף... קיצר אני ממש אוהבת
+          <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+        </div>
+      </div>
+      <p class="wa-caption">על תחביב שלא היה בתוכנית של אף אחד</p>
+    </div>
+
+    <div class="card profile-card is-ofer">
+      <img class="avatar" src="ofer_face.jpg" alt="עופר">
+      <h3>עופר</h3>
+      <span class="nick">"הבריטי המזויף שאי אפשר לפספס ממרחק"</span>
+      <div class="profile-stat is-ofer">
+        <span class="stat-num">85</span>
+        <span class="stat-label">פעמים בצ׳אט<br>שכתב "את יפה"</span>
+      </div>
+      <p>עופר נולד בקריית אונו, ובגיל 3 עבר עם המשפחה ללונדון לתשע שנים, כי אמא עשתה שם תואר שני ודוקטורט ואבא הוא בריטי מקור. תשע השנים האלה לא השפיעו על המבטא שלו, אבל הן נטעו בו הליכה שאלית — המאפיינת המקצועית — מזהה ממרחק, עוד לפני שהיא רואה את הפנים שלו:</p>
+
+      <div class="wa-row elit">
+        <div class="wa-who">אלית</div>
+        <div class="wa-stack">
+          <div class="wa-bubble">טמבל</div>
+          <div class="wa-bubble">אתה וההליכה הבריטית שלך
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <p>היא מזהה אותו לפי ההליכה, אבל לא מצליחה לסלוח לו על השעון. כשהוא הגיע מאוחר ואלית כבר מוכנה ומחכה, היא לא חיפשה דרך עדינה לומר את זה:</p>
+
+      <div class="wa-row elit">
+        <div class="wa-who">אלית</div>
+        <div class="wa-stack">
+          <div class="wa-bubble">שמע אתה בריטי מזויף</div>
+          <div class="wa-bubble">ככה מאחר</div>
+          <div class="wa-bubble">בושה וחרפה
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <p>תשע שנים בלונדון, ועדיין לא הביא משם דייקנות אחת. אבל יש דבר אחד שהוא בכל זאת לא מצניע, לא מאחר איתו, ולא משאיר למקרה — הוא פשוט חוזר עליו שוב ושוב, בלי שום נימוס בריטי:</p>
+
+      <div class="wa-row ofer">
+        <div class="wa-who">עופר</div>
+        <div class="wa-bubble">אני אוהב אותך
+          <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+        </div>
+      </div>
+
+      <p class="wa-caption">153 פעמים בצ׳אט — המילים היחידות שהבריטי שבו לא טרח להצניע</p>
+    </div>
+
   </div>
 </section>
 
-<section>
-  <h2>פרופיל: עופר, או "הסטודנט שמנהל משא ומתן יומי עם עצמו על כמה הוא שונא ללמוד"</h2>
-  <div class="card profile-card">
-    <p>עופר מתלונן על כל מבחן לפני שהוא נכתב, מצליח בו בכל זאת (91, 93, ועוד פעם "93 אני מבקש"), ומתלונן שוב על הבא בתור. הוא לוקח נוספות במשמרת בזמן שהוא "שונא את עצמו", ואז מסביר את לוח הזמנים שלו במונחים שאלית בעצמה אומרת שהיא "לא מבינה אבל בסדר, מה שעושה לך טוב". זאת לא עצלנות — זאת דרכו להתלונן על משהו שהוא ממש לא הולך להפסיק לעשות.</p>
-    <p>מתחת לציניות יש מישהו שסופר כל פרט: התנצל על שנרדם כי המתין לה לצאת מהמקלחת, מתעקש לוודא ש"המטאפורה הועברה כראוי" אחרי כל בדיחה, ושולח שורת לבבות מתוך התרגשות אחרי "תצאי, אני צחקתי". וכשאלית משווה את אחיזת הנשק שלו בתמונה לזמר של אואזיס ב-Wonderwall, הוא לא מכחיש, הוא הולך לבדוק אם יש לו תמונה נוספת. זה כל הסיפור של עופר: משחק את הבחור הקריר, רץ פנימה לבדוק את עצמו במראה.</p>
-    <blockquote>"בוודאות אני שונא את עצמי אחרת לא הייתי יוצא רצים" — על משהו שהוא בכל זאת עשה כמה דקות אחר כך</blockquote>
+<section class="sec-power">
+  <h2>מי באמת מפקח על מי</h2>
+  <div class="card power-card">
+    <p>בעבודה זה רשמי: עופר רצ, אלית מאפיינת תחתיו. גם אלית עצמה מגדירה את זה כך:</p>
+
+    <div class="wa-row elit">
+      <div class="wa-who">אלית</div>
+      <div class="wa-bubble">היינו רצ מאפיינת
+        <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+      </div>
+    </div>
+
+    <p>בבית הסדר הזה מתהפך. אלית היא זו שמצליבה משמרות, תאריכים ועדים כדי לשחזר בדיוק מתי עופר התחיל להתעניין בה:</p>
+
+    <div class="wa-row elit">
+      <div class="wa-who">אלית</div>
+      <div class="wa-bubble">אורי קיבל תקלה ב4/2
+        <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+      </div>
+    </div>
+    <div class="wa-row ofer">
+      <div class="wa-who">עופר</div>
+      <div class="wa-bubble">אז זה הגיוני
+        <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+      </div>
+    </div>
+
+    <p>ועופר, שבעבודה מחזיק בסמכות הרשמית, מקבל בבית את התפקיד השני — מה שאלית עצמה מציינת בציניות כשהוא מאשר לה משהו:</p>
+
+    <div class="wa-row elit">
+      <div class="wa-who">אלית</div>
+      <div class="wa-bubble">תודה על האישור בוס
+        <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+      </div>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>המטאפורה</h2>
-  <div class="card">
-    <p class="metaphor-line">זו לא זוגיות. זה דלפק ביקורת גבולות שבו שניהם גם הנוסעים וגם הבודקים.</p>
-    <p>כל דבר בזוגיות הזו עובר אישור: "תודה על האישור בוס" על משמרת נוספת, "יש אישור אני יכול להבין" על תוכנית לערב, ואפילו בדיחה צריכה חותמת רשמית — "המטאפורה הועברה? הועברה כראוי". אלית עצמה מתפקדת בעבודה כמי שמחתימה ונותנת מעבר, ועופר קרא לה על זה "גברת חותמת מקטאר" — וזה דבק, כי זה פשוט מתאר אותה גם בבית: שום דבר לא עובר בלי שהיא תבדוק, תאשר, ותחתום.</p>
-  </div>
-</section>
-
-<section>
+<section class="sec-dict">
   <h2>המילון הפרטי שלכם</h2>
   <div class="card">
-    <dl>
-      <dt>גברת חותמת מקטאר</dt>
-      <dd>הכינוי שעופר הדביק לאלית אחרי שהיא שלחה לו את לוח המשמרות שלה בפורמט רשמי-להפליא. נדבק כי הוא פשוט מדויק.<span class="src">"מאוד רשמי" / "גברת חותמת מקטאר"</span></dd>
 
-      <dt>Yeeyee guy</dt>
-      <dd>היוטיובר שמפרק ומרכיב נשקים על המסך שאלית "מכורה אליו" — הבסיס לכל פעם שעופר מתבל אותה ב"צהובה" כשמדובר בנשק.<span class="src">"הוא יורה בדברים עם כל מיני רובים ואקדחים... ואני מכורה אליו"</span></dd>
+    <div class="row">
+      <div class="illus ico-amber">
+        <svg viewBox="0 0 64 64">
+          <ellipse cx="32" cy="56" rx="16" ry="3" fill="#000" opacity="0.08"/>
+          <ellipse cx="32" cy="43" rx="15" ry="12" fill="#e3aa5f"/>
+          <path d="M21 22c-4-6-2-13 3-13 3 0 4 3 4 6" fill="#b5780f"/>
+          <path d="M43 22c4-6 2-13-3-13-3 0-4 3-4 6" fill="#b5780f"/>
+          <circle cx="32" cy="25" r="13" fill="#eec07f"/>
+          <ellipse cx="32" cy="29.5" rx="6.5" ry="5" fill="#fbe9d2"/>
+          <ellipse cx="32" cy="28" rx="2" ry="1.5" fill="#4a3320"/>
+          <circle cx="27" cy="23" r="1.4" fill="#2a2a2a"/>
+          <circle cx="37" cy="23" r="1.4" fill="#2a2a2a"/>
+          <path d="M28 33c1.5 2 4.5 2 6 0" stroke="#4a3320" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <rect x="22" y="34" width="20" height="5" rx="2.5" fill="#c2486b"/>
+          <circle cx="32" cy="36.5" r="2.2" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="dict-body">
+        <p class="dict-term c-amber">פישוטו / שושי</p>
+        <p>הכלב. פישוטו זה השם הרשמי, ו"שושי" זה כינוי החיבה שאלית עצמה המציאה לו — ומשתמשת בו בכל הזדמנות.</p>
+      </div>
+    </div>
 
-      <dt>פישוטו</dt>
-      <dd>הכלב, עם ציר זמן רשמי לאימוץ (22/6/2025) שמצולב מול תאריך השחרור מהצבא של אלית — הצד היחיד בזוגיות שפטור מתשאול.</dd>
+    <div class="row">
+      <div class="illus ico-blue">
+        <svg viewBox="0 0 64 64">
+          <rect x="13" y="9" width="32" height="46" rx="3" fill="#ffffff" stroke="#b9d2e8" stroke-width="2"/>
+          <rect x="19" y="17" width="20" height="2.6" rx="1.3" fill="#cfe0ef"/>
+          <rect x="19" y="23" width="16" height="2.6" rx="1.3" fill="#cfe0ef"/>
+          <rect x="19" y="29" width="20" height="2.6" rx="1.3" fill="#cfe0ef"/>
+          <g transform="rotate(-16 42 41)">
+            <circle cx="42" cy="41" r="13" fill="none" stroke="#d1582f" stroke-width="3"/>
+            <circle cx="42" cy="41" r="9" fill="none" stroke="#d1582f" stroke-width="1.4"/>
+            <path d="M36 41l4 4 9-9" stroke="#d1582f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="dict-body">
+        <p class="dict-term c-blue">גברת חותמת מקטאר</p>
+        <p>הכינוי שעופר הדביק לאלית אחרי שהיא שלחה לו את לוח המשמרות שלה בפורמט רשמי-להפליא.</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">מאוד רשמי</div>
+            <div class="wa-bubble">גברת חותמת מקטאר
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <dt>שושי</dt>
-      <dd>הכינוי שעופר שולף כשמתברר שהמיטה לא מסודרת — תגובה שלא נשארת בלי מענה.<span class="src">"את המיטה סליחה... שושי" / "שושי!!!!!!!!!!!"</span></dd>
+    <div class="row">
+      <div class="illus ico-gold">
+        <svg viewBox="0 0 64 64">
+          <ellipse cx="32" cy="56" rx="14" ry="2.6" fill="#000" opacity="0.08"/>
+          <path d="M16 36c-3-12 5-24 18-24s21 12 18 24c-3 11-13 17-18 17s-15-6-18-17z" fill="#c8924f"/>
+          <path d="M19 27c2-9 9-15 17-15 3 0 6 1 8 2-4-3-9-4-13-4-9 0-16 6-18 14-1 1-1 2-1 3z" fill="#dba968" opacity="0.7"/>
+          <ellipse cx="26" cy="28" rx="2" ry="1.5" fill="#7a5630"/>
+          <ellipse cx="38" cy="34" rx="2" ry="1.5" fill="#7a5630"/>
+          <ellipse cx="29" cy="41" rx="2" ry="1.5" fill="#7a5630"/>
+          <path d="M44 16c3 2 4 6 2 9-1-2-3-3-5-3 1-2 2-4 3-6z" fill="#5fb6d9"/>
+          <ellipse cx="43" cy="18" rx="1.2" ry="0.8" fill="#fff" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="dict-body">
+        <p class="dict-term c-gold">תפוח אדמה</p>
+        <p>האבחנה העצמית של אלית בכל פעם שהיא חמה, מזיעה, או מצולמת בלי אזהרה מוקדמת.</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">עופר אני נראית כמו תפוח אדמה
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <dt>כלבבי</dt>
-      <dd>כינוי חיבה משולב שעופר ממציא — חצי "כלב" (על שם פישוטו), חצי "לבבי" — ומשתמש בו בלי הסבר, כאילו זה כינוי קבוע מאז ומתמיד.</dd>
+    <div class="row">
+      <div class="illus ico-violet">
+        <svg viewBox="0 0 64 64">
+          <g transform="rotate(-10 25 32)"><rect x="10" y="17" width="30" height="30" rx="8" fill="#a07ed1"/></g>
+          <g transform="rotate(10 39 32)"><rect x="24" y="17" width="30" height="30" rx="8" fill="#7a4fb0"/></g>
+          <path d="M32 24l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="dict-body">
+        <p class="dict-term c-violet">אחת לאחת</p>
+        <p>הקריאה המשותפת שלהם כשמתגלה צירוף מקרים — נאמרת פעם אחת, ואז שוב, בכוונה, בכתיב מקולקל.</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">אחת לאחת</div>
+        </div>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">צירוף מקרים!
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">אחחחתתתתתת לאחתתתת
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <dt>פיק מי</dt>
-      <dd>העלבון שאלכס הטיח באלית דרך אור, ושלא ירד ממנה ימים — עד שעופר נאלץ להבטיח לה רשמית שהיא לא אחת מהן.<span class="src">"איזה פיק מי היא" / "את לא אחת מהן"</span></dd>
-    </dl>
+    <div class="row">
+      <div class="illus ico-raisin">
+        <svg viewBox="0 0 64 64">
+          <ellipse cx="32" cy="56" rx="14" ry="2.6" fill="#000" opacity="0.08"/>
+          <path d="M20 22c-6 6-8 18-2 28 6 9 18 11 26 4 7-6 8-18 3-27-5-9-19-13-27-5z" fill="#5c3a21"/>
+          <path d="M22 24c-4 5-5 14-1 21" stroke="#3e2716" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M30 20c-3 7-3 17 1 25" stroke="#3e2716" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <path d="M38 23c3 6 3 16-1 24" stroke="#3e2716" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <ellipse cx="24" cy="26" rx="4" ry="3" fill="#7a5634" opacity="0.6"/>
+          <path d="M30 14c1-3 4-4 6-2" stroke="#5a7d3c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="dict-body">
+        <p class="dict-term c-raisin">צימוק</p>
+        <p>זה התחיל כעקיצה: אלית צפתה בסרטון ישן שלו וקבעה שהוא היה נמוך וקטן — כמו צימוק. הוא לא הכחיש.</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">כי אתה צימוק</div>
+        </div>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">כן כן אני צימוק
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p>מאז זה לא עזב. תוך כמה חודשים זה הפך מעקיצה לכינוי החיבה הקבוע שלהם, ששניהם משתמשים בו כל הזמן — בבוקר, בלילה, ובכל הודעת "אני אוהב/ת אותך":</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">קיצר אני אוהבת אותך צימוק</div>
+        </div>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">אני אוהב אותך צימוק
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+        <p class="wa-caption">אלית גם המציאה לזה ספין-אוף: פלייליסט בשם "קרקר עם צימוקים"</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<section>
+<section class="sec-awards">
   <h2>פרסי האקדמיה של הזוג</h2>
-  <div class="card awards">
+  <div class="awards">
 
-    <div class="award">
-      <div class="title">הכינוי הכי לא צפוי בקטגוריית חיבה</div>
-      <div class="winner">זוכה: כלבבי ושושי</div>
-      <p>בתוך כמה הודעות אלית עוברת בין "מותק שלי" ו"מיי לאב" לבין "טמבל" ו"שושי" — וכל הכינויים בתוקף במקביל. אף אחד מהם לא מתיישן.</p>
+    <div class="award award-rose">
+      <div class="illus ico-rose">
+        <svg viewBox="0 0 64 64">
+          <g transform="rotate(-14 26 26)">
+            <path d="M22 8h20a4 4 0 0 1 4 4v20L24 54 8 38 22 8z" fill="#e7a9bb"/>
+            <circle cx="34" cy="20" r="4" fill="#fff"/>
+          </g>
+          <g transform="rotate(10 36 36)">
+            <path d="M30 14h20a4 4 0 0 1 4 4v20L32 60 16 44 30 14z" fill="#c2486b"/>
+            <circle cx="42" cy="26" r="4" fill="#fff"/>
+            <path d="M40 38c-3-3-7 0-5 4 1 2 5 5 5 5s4-3 5-5c2-4-2-7-5-4z" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="title">התחרות הכי לא הוגנת: כינויים ושמות קוד</div>
+        <div class="winner">זוכה: כל המשפחה</div>
+        <p>לכלב יש שני שמות, שניהם מאלית. ואלית עצמה עוברת בין כמה כינויים לעופר באותה נשימה:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">מותק שלי</div>
+            <div class="wa-bubble">יפה שלי</div>
+            <div class="wa-bubble">טמבל
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="award">
-      <div class="title">התחביב שהפתיע את כולם, כולל אותה</div>
-      <div class="winner">זוכה: אלית</div>
-      <p>שבע עשרה שנות פסנתר קלאסי, ואז התרגשות בלתי נשלטת מתמונת רובה. "ככה אני רוצה שתאחוז בי" נאמר בלי שום אירוניה.</p>
+    <div class="award award-indigo">
+      <div class="illus ico-indigo">
+        <svg viewBox="0 0 64 64">
+          <ellipse cx="32" cy="56" rx="18" ry="2.6" fill="#000" opacity="0.07"/>
+          <path d="M44 12a14 14 0 1 0 6 22 14 14 0 0 1-6-22z" fill="#7176d8"/>
+          <path d="M16 38c0-5 4-8 9-8h14c5 0 9 3 9 8v6c0 3-3 5-6 5H22c-3 0-6-2-6-5v-6z" fill="#8d90d6"/>
+          <path d="M19 38c4-2 9-2 13 0s9 2 13 0" stroke="#5a5ec0" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M18 23l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" fill="#fff" opacity="0.85"/>
+          <path d="M52 30l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z" fill="#fff" opacity="0.7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="title">ההתנצלות הטובה ביותר בתפקיד משני</div>
+        <div class="winner">זוכה: עופר</div>
+        <p>איכשהו גורם לזה שהוא נרדם בזמן שהמתין לה לצאת מהמקלחת להישמע כמו תאונה טרגית ולא תכונת אופי:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">סליחה שנרדמתי עלייך אתמול בלילה</div>
+            <div class="wa-bubble">רציתי לחכות לך שתצאי מהמקלחת</div>
+            <div class="wa-bubble">אבל נפלתי
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="award">
-      <div class="title">ניהול המשא ומתן הביטחוני-תזונתי הטוב ביותר בנופש</div>
-      <div class="winner">זוכה: אלית</div>
-      <p>שכנעה את עופר שחצי פנסיון מספיק, נימקה את זה בעדות מהדר שהתפוצץ מאוכל, וסגרה את כל הדיון במשפט אחד: "תסמוך עליי".</p>
+    <div class="award award-slate">
+      <div class="illus ico-slate">
+        <svg viewBox="0 0 64 64">
+          <circle cx="26" cy="32" r="16" fill="#c3cad9"/>
+          <path d="M40 28c8-2 18-1 21 2 1 1 1 2 0 3-3 1-13 0-21-1z" fill="#c3cad9"/>
+          <path d="M40 28c5-1 12-1 16 1" stroke="#8b95ac" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M19 28c1.5-1.5 4.5-1.5 6 0" stroke="#5b6478" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M30 28c1.5-1.5 4.5-1.5 6 0" stroke="#5b6478" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M21 38c2 2 8 2 10 0" stroke="#5b6478" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="50" cy="46" r="7" fill="#d1582f"/>
+          <path d="M47 43l6 6M53 43l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="title">השקר הכי הגון</div>
+        <div class="winner">זוכה: אלית</div>
+        <p>הספיקה לרכבת, ובמקום להודות שטעתה בחישוב הזמן, בחרה גרסה אחרת:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">שיקרתי</div>
+            <div class="wa-bubble">לא טעיתי
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="wa-caption">כי שקר נשמע פחות מביך מטעות</p>
+      </div>
     </div>
 
-    <div class="award">
-      <div class="title">השקר הכי הגון</div>
-      <div class="winner">זוכה: אלית</div>
-      <p>הספיקה לרכבת, ובמקום להודות שטעתה בחישוב הזמן, הכריזה שהיא "שיקרה" — כי שקר נשמע פחות מביך מטעות.</p>
+    <div class="award award-teal">
+      <div class="illus ico-teal">
+        <svg viewBox="0 0 64 64">
+          <ellipse cx="32" cy="56" rx="17" ry="2.6" fill="#000" opacity="0.08"/>
+          <rect x="20" y="11" width="24" height="16" rx="5" fill="none" stroke="#176f6f" stroke-width="4"/>
+          <rect x="11" y="22" width="42" height="30" rx="5" fill="#3fb0ad"/>
+          <rect x="28" y="22" width="5" height="30" fill="#176f6f"/>
+          <rect x="11" y="35" width="42" height="5" fill="#176f6f"/>
+          <circle cx="20" cy="32" r="5.5" fill="#fbf3da"/>
+          <path d="M20 28v2M20 34v2M16 32h2M22 32h2" stroke="#a8870f" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="44" cy="46" r="5.5" fill="#fceee7"/>
+          <path d="M40 46c1.5-2 6.5-2 8 0" stroke="#d1582f" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="title">המשא ומתן הכי משוכנע על תזונה בנופש</div>
+        <div class="winner">זוכה: אלית</div>
+        <p>שכנעה את עופר שחצי פנסיון מספיק, נימקה את זה בעדות מהדר שהתפוצץ מאוכל, וסגרה את כל הדיון במשפט אחד:</p>
+        <div class="wa-row elit">
+          <div class="wa-who">אלית</div>
+          <div class="wa-bubble">תסמוך עליי
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="award">
-      <div class="title">ההתנצלות הטובה ביותר בתפקיד משני</div>
-      <div class="winner">זוכה: עופר</div>
-      <p>"סליחה שנרדמתי עלייך אתמול בלילה... אבל נפלתי" — איכשהו גורם לזה שהוא נרדם בזמן שהמתין לה לצאת מהמקלחת להישמע כמו תאונה טרגית ולא תכונת אופי.</p>
+    <div class="award award-gold">
+      <div class="illus ico-gold">
+        <svg viewBox="0 0 64 64">
+          <path d="M30 8l1.5 6" stroke="#8a6a14" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="32" cy="6" r="1.8" fill="#8a6a14"/>
+          <g transform="rotate(-7 32 34)">
+            <rect x="10" y="12" width="44" height="44" rx="3" fill="#a8870f"/>
+            <rect x="16" y="18" width="32" height="32" fill="#fdf1de"/>
+            <circle cx="24" cy="27" r="3.4" fill="#e9b64a"/>
+            <path d="M16 44l8-9 6 6 8-10 10 13z" fill="#c8924f"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="title">ההסחה הכי מוצלחת באמצע ויכוח</div>
+        <div class="winner">זוכה: עופר</div>
+        <p>באמצע ריב על מי מנקה, הביא לשולחן עירום משפחתי לא קשור:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-bubble">תמונה של סבתא שלי ערומה לא עניין אותך אבל הספא שעלתה לי משכנתא כן?
+            <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="award">
-      <div class="title">חקירת הרקע היסודית ביותר שבוצעה על בן זוג</div>
-      <div class="winner">זוכה: אלית</div>
-      <p>שחזרה את התאריך המדויק שבו עופר התחיל להתעניין בה, על בסיס משמרות ותקלה שאורי קיבל. בלי הערות — היא צדקה.</p>
+    <div class="award award-coral">
+      <div class="illus ico-coral">
+        <svg viewBox="0 0 64 64">
+          <path d="M32 50C18 40 10 30 10 20c0-8 6-13 12-13 5 0 8 3 10 7 2-4 5-7 10-7 6 0 12 5 12 13 0 10-8 20-22 30z" fill="#d1582f"/>
+          <path d="M30 16c1-3 3-5 6-6" stroke="#f3c6b3" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M10 12l-5-4M54 12l5-4M32 6V1" stroke="#d1582f" stroke-width="2.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="title">הצהרת האהבה הספונטנית ביותר שלא התבקשה</div>
+        <div class="winner">זוכה: עופר</div>
+        <p>כשאלית התלוננה שהוא רואה את נטע מהעבודה יותר ממנה, הוא לא הכחיש בנימוס — הוא מתח את המילה "רק" כאילו זה משפט משפטי:</p>
+        <div class="wa-row ofer">
+          <div class="wa-who">עופר</div>
+          <div class="wa-stack">
+            <div class="wa-bubble">אני רואה רקקק אותך אלית</div>
+            <div class="wa-bubble">רק!
+              <svg class="wa-tail" viewBox="0 0 8 13"><path d="M5.188,1H0v11.193l6.467,-8.625C7.526,2.156 6.958,1 5.188,1z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<section>
+<section class="sec-yelp">
   <h2>ביקורת יֶלפּ על הזוגיות: עופר ואלית</h2>
-  <div class="card yelp">
-    <div class="stars">★★★★☆</div>
-    <div class="rating-grid">
-      <div>שירות ומענה<span>5/5</span></div>
-      <div>ניקיון ותחזוקה<span>3/5</span></div>
-      <div>תקציב נופש<span>4/5</span></div>
-      <div>שקיפות רגשית<span>4.5/5</span></div>
+  <div class="card yelp-card">
+
+    <div class="yelp-logo-row">
+      <svg class="yelp-burst" viewBox="0 0 24 24"><path fill="#d32323" d="M12 1l2 6.2 6.5-1.4-3.8 5.4 5.6 3.8-6.6 1-0.3 6.6-3.4-5.7-3.4 5.7-0.3-6.6-6.6-1 5.6-3.8L3.5 5.8 10 7.2z"/></svg>
+      <span class="yelp-logo-text">yelp</span>
     </div>
-    <div class="yelp-review">
-      <p><strong>4 מתוך 5 כוכבים.</strong> הגעתי בציפייה לזוגיות רגילה, עזבתי עם תיק מסודר על כל אי הבנה, כינוי לכל מצב רוח, וכלב עם תיעוד מסודר יותר משני בני האדם המארחים אותו.</p>
-      <p>שירות ומענה: מעולה, תגובה תוך דקה לכל הודעה, גם בעשר הודעות בודדות ברצף. ניקיון: נקודה רגישה — איום ספונג'ה אחד הצליח לעצור משק בית שלם. תקציב נופש: רמת מחקר שמתחרה בסוכן נסיעות מקצועי, כולל השוואת מחירים בין שלושה אתרי הזמנה בערב אחד.</p>
-      <p>הורדנו כוכב על כך שכל בדיחה דורשת אישור רשמי שהיא "הועברה כראוי" לפני שאפשר לעבור לנושא הבא. מומלץ למי שאוהב שהאהבה שלו מגיעה עם חותמת תקפה ושני עדים.</p>
+
+    <div class="yelp-biz">
+      <h3 class="yelp-biz-name">עופר &amp; אלית</h3>
+      <div class="yelp-biz-meta">מערכת יחסים · ביטחון נתב״ג · ישראל</div>
+      <div class="yelp-agg">
+        <span class="yelp-agg-score">4.0</span>
+        <span class="yelp-stars">★★★★☆</span>
+        <span class="yelp-agg-count">(ביקורת אחת)</span>
+      </div>
     </div>
-    <div class="yelp-meta">תיעוד מלא · 130,000 הודעות · גרסה מאומתת</div>
+
+    <div class="yelp-reviewer">
+      <div class="yelp-avatar">B</div>
+      <div>
+        <div class="yelp-reviewer-name">פישוטו.ד</div>
+        <div class="yelp-reviewer-stats">קרא 130,000 הודעות · ביקורת 1</div>
+      </div>
+    </div>
+
+    <div class="yelp-review-stars-row">
+      <span class="yelp-stars">★★★★☆</span>
+      <span class="yelp-review-date">29 ביוני 2026</span>
+    </div>
+
+    <div class="yelp-review-body">
+      <p><strong>4 מתוך 5 כוכבים.</strong> הגעתי בציפייה לזוגיות רגילה, עזבתי עם תיק מסודר על כל אי הבנה, כינוי לכל מצב רוח, וכלב עם שני שמות ותיעוד מסודר יותר משני בני האדם המארחים אותו.</p>
+      <p>שירות ומענה: מעולה, תגובה תוך דקה לכל הודעה, גם בעשר הודעות בודדות ברצף. ניקיון: נקודה רגישה — איום ספונג'ה אחד הצליח לעצור משק בית שלם. תקציב נופש: רמת מחקר שמתחרה בסוכן נסיעות מקצועי.</p>
+      <p>הורדנו כוכב על כך שגם בבית אף דבר לא עובר בלי בדיקה נגדית. מומלץ למי שאוהב שהאהבה שלו מגיעה עם תיק חקירה מסודר.</p>
+    </div>
+
+    <div class="yelp-detail-chips">
+      <span class="yelp-chip">שירות ומענה <span class="yelp-stars">★★★★★</span></span>
+      <span class="yelp-chip">ניקיון ותחזוקה <span class="yelp-stars">★★★☆☆</span></span>
+      <span class="yelp-chip">תקציב נופש <span class="yelp-stars">★★★★☆</span></span>
+      <span class="yelp-chip">שקיפות רגשית <span class="yelp-stars">★★★★☆</span></span>
+    </div>
+
+    <div class="yelp-actions">
+      <button>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5b6b62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3zm0 0l4.5-8a2 2 0 0 1 2 2.2L12.5 9H19a2 2 0 0 1 2 2.4l-1.4 7A2 2 0 0 1 17.6 20H10a3 3 0 0 1-3-3v-6z"/></svg>
+        מועיל
+      </button>
+      <button>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5b6b62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8.5 10.5h.01M15.5 10.5h.01M8 15c1.2 1.6 6.8 1.6 8 0"/></svg>
+        מצחיק
+      </button>
+      <button>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5b6b62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><rect x="5.5" y="10" width="5" height="3.4" rx="1.2"/><rect x="13.5" y="10" width="5" height="3.4" rx="1.2"/><path d="M10.5 11.6h3M5.5 11h-2M18.5 11h2"/><path d="M8.5 16c1.2 1 5.8 1 7 0"/></svg>
+        קוּל
+      </button>
+    </div>
+
+    <div class="yelp-meta-foot">תיעוד מלא · 130,000 הודעות · גרסה מאומתת</div>
   </div>
 </section>
 
@@ -337,7 +1055,7 @@
 
 <footer>
   <div class="divider"></div>
-  כל ציטוט אמיתי. שום בקשת אישור לא נדחתה בתהליך.
+  כל ציטוט אמיתי. כל תפקיד מאומת.
 </footer>
 
 </body>
